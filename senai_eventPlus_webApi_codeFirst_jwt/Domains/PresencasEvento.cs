@@ -14,7 +14,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Domains
         [Key]
         //  Define o Auto incremento
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid idPresençasEvento { get; set; }
+        public Guid idPresencasEvento { get; set; }
 
         //  Define que variável é obrigatória.
         [Required(ErrorMessage = "O campo \"id presenca evento\" é obrigatório!")]

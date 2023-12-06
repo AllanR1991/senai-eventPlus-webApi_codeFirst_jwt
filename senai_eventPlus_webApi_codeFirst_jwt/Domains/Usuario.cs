@@ -40,6 +40,6 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Domains
 
         //  Define a chave estrangeira
         [ForeignKey("idTipoUsuario")]
-        public TiposUsuario tiposUsuario { get; set; }
+        public TiposUsuario? tiposUsuario { get; set; }
     }
 }

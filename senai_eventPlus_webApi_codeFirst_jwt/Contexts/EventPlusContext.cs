@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using senai_eventPlus_webApi_codeFirst_jwt.Domains;
+using senai_eventPlus_webApi_codeFirst_jwt.Utils;
 
 namespace senai_eventPlus_webApi_codeFirst_jwt.Contexts
 {
     public class EventPlusContext : DbContext
     {
+        //  Dbset<> é utilizado para efetuar as consultas no banco de dados.
+        //  Utilização : Dbset<ClasseDomain> nomeQualquer {get; set;}
+
         public DbSet<Comentario> Comentario { get; set; }
         public DbSet<Evento> Evento { get; set; }
         public DbSet<Instituicao> Instituicao { get; set; }
@@ -14,12 +18,14 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Contexts
         public DbSet<TiposUsuario> TiposUsuario { get;set; }
         public DbSet<Usuario> Usuario { get; set; }
 
+        //  Configurando o acesso ao banco de dados.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server = ALLANR1991-DESK\\SQLEXPRESS; Database = EventPlus_CodeFirst; User Id = sa; pwd = 123456; TrustServerCertificate=True;");
             base.OnConfiguring(optionsBuilder);
         }
 
+        //  Configurando dados presetados nos banco de dados.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -49,7 +55,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Contexts
                         idTipoUsuario = tipoUsuarioAdm,
                         nome = "Allan Rodrigues",
                         email  = "allan@allan.com",
-                        senha = "allan"
+                        senha = Criptografia.GerarHash("allan")
                     },
                     new Usuario
                     {
@@ -57,7 +63,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Contexts
                         idTipoUsuario = tipoUsuarioComum,
                         nome = "Everton Araujo",
                         email = "everton@everton.com",
-                        senha = "everton"
+                        senha = Criptografia.GerarHash("everton")
                     }
                 );
 
@@ -112,7 +118,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Contexts
                 .HasData(
                     new PresencasEvento
                     {
-                        idPresençasEvento = Guid.NewGuid(),
+                        idPresencasEvento = Guid.NewGuid(),
                         idEvento = eventoSql,
                         idUsuario = usuarioEverton,
                         situacao = true

@@ -133,14 +133,14 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Migrations
                 name: "PresencasEvento",
                 columns: table => new
                 {
-                    idPresençasEvento = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    idPresencasEvento = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     idUsuario = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     idEvento = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     situacao = table.Column<bool>(type: "BIT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PresencasEvento", x => x.idPresençasEvento);
+                    table.PrimaryKey("PK_PresencasEvento", x => x.idPresencasEvento);
                     table.ForeignKey(
                         name: "FK_PresencasEvento_Evento_idEvento",
                         column: x => x.idEvento,
@@ -158,15 +158,15 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Migrations
             migrationBuilder.InsertData(
                 table: "Instituicao",
                 columns: new[] { "idInstituicao", "cnpj", "endereco", "nomeFantasia", "razaoSocial" },
-                values: new object[] { new Guid("dda605c1-21e5-4ed3-ad17-5e36cd4ea199"), "1234567891012", "Rua Niteroi 180", "DevSchool", "Escola Internacional de Desenvolvimento" });
+                values: new object[] { new Guid("afc910e2-d5d2-4a39-b85e-538ee50afa5a"), "1234567891012", "Rua Niteroi 180", "DevSchool", "Escola Internacional de Desenvolvimento" });
 
             migrationBuilder.InsertData(
                 table: "TipoUsuario",
                 columns: new[] { "idTipoUsuario", "tipoUsuario" },
                 values: new object[,]
                 {
-                    { new Guid("7f20d53d-0ed5-4b6a-911e-39752d78277b"), "Administrador" },
-                    { new Guid("940d502d-d177-42ac-b88c-ef0d7b607a39"), "Comum" }
+                    { new Guid("632344c2-7f3e-4280-992f-03c6d3503a47"), "Comum" },
+                    { new Guid("6fd46c05-f80b-4fa2-9a9f-119475efe196"), "Administrador" }
                 });
 
             migrationBuilder.InsertData(
@@ -174,33 +174,33 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Migrations
                 columns: new[] { "idTiposEvento", "tipoEvento" },
                 values: new object[,]
                 {
-                    { new Guid("1bfbf44b-c4ae-4a57-bfb7-1babb590a6bc"), "C#" },
-                    { new Guid("9b650c6e-ee33-4c64-bd79-840e8e745da8"), "SQL Server" }
+                    { new Guid("64c88e66-4150-41b4-bf7d-112e04e51fa4"), "SQL Server" },
+                    { new Guid("f1c2ce9c-bad5-4d24-8baf-0a9e2544a281"), "C#" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Evento",
                 columns: new[] { "idEvento", "dataEvento", "descricao", "horarioEvento", "idInstituicao", "idTipoEvento", "nomeEvento" },
-                values: new object[] { new Guid("ff0ce50c-4e32-4a03-8b88-dc19cee152fb"), new DateTime(2023, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Conceitos básicos do SQL Server, como DDL, DML, DQL.", new TimeSpan(0, 13, 0, 0, 0), new Guid("dda605c1-21e5-4ed3-ad17-5e36cd4ea199"), new Guid("9b650c6e-ee33-4c64-bd79-840e8e745da8"), "Introdução ao banco de dados SQL Server" });
+                values: new object[] { new Guid("da5ee12d-cdf8-4e82-bd88-47d23310e90b"), new DateTime(2023, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Conceitos básicos do SQL Server, como DDL, DML, DQL.", new TimeSpan(0, 13, 0, 0, 0), new Guid("afc910e2-d5d2-4a39-b85e-538ee50afa5a"), new Guid("64c88e66-4150-41b4-bf7d-112e04e51fa4"), "Introdução ao banco de dados SQL Server" });
 
             migrationBuilder.InsertData(
                 table: "Usuario",
                 columns: new[] { "idUsuario", "email", "idTipoUsuario", "nome", "senha" },
                 values: new object[,]
                 {
-                    { new Guid("173fe1bf-ec4a-4ccf-9d54-be7c4f7e5614"), "allan@allan.com", new Guid("7f20d53d-0ed5-4b6a-911e-39752d78277b"), "Allan Rodrigues", "allan" },
-                    { new Guid("31fad950-d604-4c04-be9d-4d5f59731fdd"), "everton@everton.com", new Guid("940d502d-d177-42ac-b88c-ef0d7b607a39"), "Everton Araujo", "everton" }
+                    { new Guid("7403ec30-d3d6-4187-8343-22a55eb61b44"), "everton@everton.com", new Guid("632344c2-7f3e-4280-992f-03c6d3503a47"), "Everton Araujo", "$2a$11$tl/p3i9P00tHfMPUFjdneePHAjgVLiGEK7f7ll4gMU7ysBfsPrnbG" },
+                    { new Guid("d6f297ae-38eb-49c1-a328-f4b629f938de"), "allan@allan.com", new Guid("6fd46c05-f80b-4fa2-9a9f-119475efe196"), "Allan Rodrigues", "$2a$11$fdaIcbKzbQzdUhMhWLfyPON/wW/PeTjXmRAawaOrdde2jl7GAiwXO" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Comentario",
                 columns: new[] { "idComentario", "descricao", "exibe", "idEvento", "idUsuario" },
-                values: new object[] { new Guid("41b5e224-cdd1-48fd-905d-b86fd2e25f7d"), "Excelente evento", true, new Guid("ff0ce50c-4e32-4a03-8b88-dc19cee152fb"), new Guid("31fad950-d604-4c04-be9d-4d5f59731fdd") });
+                values: new object[] { new Guid("bad3be25-473d-40e4-ad27-ca9015f67ff2"), "Excelente evento", true, new Guid("da5ee12d-cdf8-4e82-bd88-47d23310e90b"), new Guid("7403ec30-d3d6-4187-8343-22a55eb61b44") });
 
             migrationBuilder.InsertData(
                 table: "PresencasEvento",
-                columns: new[] { "idPresençasEvento", "idEvento", "idUsuario", "situacao" },
-                values: new object[] { new Guid("29b61829-49af-4205-975e-a60f37baca5b"), new Guid("ff0ce50c-4e32-4a03-8b88-dc19cee152fb"), new Guid("31fad950-d604-4c04-be9d-4d5f59731fdd"), true });
+                columns: new[] { "idPresencasEvento", "idEvento", "idUsuario", "situacao" },
+                values: new object[] { new Guid("3b9ba71e-0696-4406-ba0b-a716ca419cd5"), new Guid("da5ee12d-cdf8-4e82-bd88-47d23310e90b"), new Guid("7403ec30-d3d6-4187-8343-22a55eb61b44"), true });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comentario_idEvento",
