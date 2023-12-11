@@ -76,15 +76,18 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Repositories
                 {
                     idPresencasEvento = p.idPresencasEvento,
                     situacao = p.situacao,
+                    idUsuario = p.idUsuario,
 
                     evento = new Evento
                     {
+                        idEvento = p.idEvento,
                         dataEvento = p.evento.dataEvento,
                         nomeEvento = p.evento.nomeEvento,
                         descricao = p.evento.descricao,
 
-                        instituicao =  new Instituicao
+                        instituicao = new Instituicao
                         {
+                            idInstituicao = p.evento.idInstituicao,
                             nomeFantasia = p.evento.instituicao.nomeFantasia
                         }
                     }

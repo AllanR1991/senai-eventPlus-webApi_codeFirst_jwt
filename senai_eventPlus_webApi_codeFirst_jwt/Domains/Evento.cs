@@ -49,12 +49,14 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Domains
         //  Usado TimeSpan devido o EntityFrameWork não conseguir mapear com TimeOnly.
         public TimeSpan horarioEvento { get; set; }
 
-        //  Define a ForeignKey
-        [ForeignKey(nameof(idInstituicao))]
-        public Instituicao instituicao { get; set; }
+
 
         //  Define a ForeignKey
+        [ForeignKey(nameof(idInstituicao))]
+        public Instituicao? instituicao { get; set; }
+        
+        //  Define a ForeignKey
         [ForeignKey(nameof (idTipoEvento))]
-        public TiposEvento tipoEvento { get; set; }
+        public TiposEvento? tipoEvento { get; set; }
     }
 }

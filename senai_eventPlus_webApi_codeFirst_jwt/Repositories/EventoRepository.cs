@@ -1,4 +1,5 @@
-﻿using senai_eventPlus_webApi_codeFirst_jwt.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using senai_eventPlus_webApi_codeFirst_jwt.Contexts;
 using senai_eventPlus_webApi_codeFirst_jwt.Domains;
 using senai_eventPlus_webApi_codeFirst_jwt.Interfaces;
 
@@ -66,7 +67,45 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Repositories
 
         public List<Evento> Listartodos()
         {
-            return context.Evento.ToList();
+            try
+            {
+                return context.Evento.Select(e => new Evento
+                {
+                    idEvento = e.idEvento,
+                    dataEvento = e.dataEvento,
+                    nomeEvento = e.nomeEvento,
+                    descricao = e.descricao,
+                    tipoEvento = new TiposEvento
+                    {
+                        idTiposEvento = e.idTipoEvento,
+                        tipoEvento = e.tipoEvento!.tipoEvento
+                    },
+                    idInstituicao = e.idInstituicao,
+                    instituicao = new Instituicao
+                    {
+                        nomeFantasia = e.instituicao!.nomeFantasia
+                    }
+                }).ToList();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+
+        public List<Evento> ListarProximos()
+        {
+            try
+            {
+                return context.Evento
+                    .Where(e => e.dataEvento > DateTime.Now).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

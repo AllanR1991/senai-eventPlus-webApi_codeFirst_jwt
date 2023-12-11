@@ -35,5 +35,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Interfaces
         /// <param name="id">Id utilizada para encontrar o evento que desejamos exibir as informações.</param>
         /// <returns>Retorna um objeto do tipo evento.</returns>
         public Evento ListarPorId(Guid id);
+
+        List<Evento> ListarProximos();
     }
 }

@@ -85,5 +85,37 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Repositories
                     NomeEvento = c.evento.nomeEvento
                 }).ToList();            
         }
+
+
+        public Comentario BuscarPorIdUsuario(Guid idUsuario, Guid idEvento)
+        {
+            try
+            {
+                return context.Comentario
+                    .Select(c => new Comentario
+                    {
+                        idComentario = c.idComentario,
+                        descricao = c.descricao,
+                        exibe = c.exibe,
+                        idUsuario = c.idUsuario,
+                        idEvento = c.idEvento,
+
+                        usuario = new Usuario
+                        {
+                            nome = c.usuario!.nome
+                        },
+
+                        evento = new Evento
+                        {
+                            nomeEvento = c.evento!.nomeEvento,
+                        }
+
+                    }).FirstOrDefault(c => c.idUsuario == idUsuario && c.idEvento == idEvento)!;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

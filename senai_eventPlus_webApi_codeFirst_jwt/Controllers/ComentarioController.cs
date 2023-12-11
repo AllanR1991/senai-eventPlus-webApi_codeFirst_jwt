@@ -64,6 +64,28 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Controllers
             }
         }
 
+        /// <summary>
+        /// Lista um comentário.
+        /// </summary>
+        /// <param name="id">Id Utilizada para buscar o comentário.</param>
+        /// <returns>Retorna status code 200</returns>
+        /// <response code="200">Lista de comentário exíbido com sucesso.</response>
+        /// <response code="400">Não foi possivel exíbir a lista.</response>
+        [HttpGet("BuscaIdUsuarioIdEvento")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public IActionResult ListaComentarioUsarioEvento(Guid idUsuario, Guid idEvento)
+        {
+            try
+            {                
+                return StatusCode(200, _comentario.BuscarPorIdUsuario(idUsuario, idEvento));
+            }
+            catch (Exception)
+            {
+                return StatusCode(400, "Não foi possivel listar");
+            }
+        }
+
 
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿    using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai_eventPlus_webApi_codeFirst_jwt.Domains;
 using senai_eventPlus_webApi_codeFirst_jwt.Interfaces;
@@ -150,6 +150,20 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Controllers
             catch (Exception erro)
             {
                 return StatusCode(500, new { Erro = erro, Mensagem = "Ocorreu um Erro" });
+            }
+        }
+
+
+        [HttpGet("ListarMinhas/{id}")]
+        public IActionResult GetMyList(Guid id)
+        {
+            try
+            {
+                return Ok(_presencasEvento.ListarMinhas(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }

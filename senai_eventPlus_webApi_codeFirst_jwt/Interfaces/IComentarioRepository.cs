@@ -36,5 +36,8 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Interfaces
         /// <param name="id">Id utilizada para encontrar o comentário que desejamos exibir as informações.</param>
         /// <returns>Retorna um objeto do tipo comentário.</returns>
         public Comentario ListarPorId(Guid id);
+
+
+        public Comentario BuscarPorIdUsuario(Guid idUsuario, Guid idEvento);
     }
 }

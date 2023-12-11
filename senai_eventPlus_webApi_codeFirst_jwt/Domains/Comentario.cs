@@ -38,11 +38,11 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Domains
 
         //  Define a ForeignKey
         [ForeignKey(nameof(idUsuario))]
-        public Usuario usuario { get; set; }
+        public Usuario? usuario { get; set; }
 
         //  Define a ForeignKey
         [ForeignKey(nameof(idEvento))]
-        public Evento evento { get; set; }
+        public Evento? evento { get; set; }
 
     }
 }

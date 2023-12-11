@@ -65,7 +65,18 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Controllers
         }
 
 
-
+        [HttpGet("ListarProximos")]
+        public IActionResult GetNextEvents()
+        {
+            try
+            {
+                return Ok( _evento.ListarProximos());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
         /// <summary>
         /// Cadastra um novo Evento.
         /// </summary>

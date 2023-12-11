@@ -38,8 +38,8 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Controllers
                 {
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.email),
                     new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.nome),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.idTipoUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.tiposUsuario.tipoUsuario),
+                    new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.idUsuario.ToString()),
+                    new Claim("role", usuarioBuscado.tiposUsuario.tipoUsuario),
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("event-webapi-chave-autenticacao-ef"));

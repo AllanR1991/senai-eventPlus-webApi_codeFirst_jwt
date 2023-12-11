@@ -107,7 +107,7 @@ namespace senai_eventPlus_webApi_codeFirst_jwt.Repositories
                         idUsuario = u.idUsuario,
                         nome = u.nome,
                         email = u.email,
-                        senha = senha,
+                        senha = u.senha,
 
                         tiposUsuario = new TiposUsuario
                         {
